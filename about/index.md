@@ -17,7 +17,7 @@ Publications
 Links
 =====
 
-* [My Resume](/files/Wenqian_Li.pdf)
+* [My Resume](/files/Wenqian_Li_Resume.pdf)
 
 * [My GitHub](https://github.com/verali0816)
 
