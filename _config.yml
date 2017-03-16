@@ -2,8 +2,8 @@
 
 title:            Data Portfolia
 locale:           en_US
-#url:              https://verali0816.github.io
-url:              http://localhost:4000
+url:              https://verali0816.github.io
+#url:              http://localhost:4000
 
 name: Wenqian Li
 description: My personal website
