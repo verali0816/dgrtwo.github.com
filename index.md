@@ -1,5 +1,5 @@
 ---
 layout: home
 excerpt: "My personal website"
-tags: [blog]
+tags: [About Me]
 ---
