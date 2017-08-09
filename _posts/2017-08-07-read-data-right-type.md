@@ -15,3 +15,7 @@ In `read_excel`, `col_types` can be specified. "NULL" means guessing all columns
 2. character changes to factor type.
 This sometimes can cause serious headache. Pre-specify the type when readding data is a good habit. 
 In `read.csv`, the characters are converted to factor by default. If conversion is not desired, set `stringAsFactors` as FALSE, or set `colClasses` specifically.  
+In `read_excel`, characters will stay as characters. 
+
+One difference I noticed of factor vs character is when converting to vector. For example, `char1` is a character column. `char2 = factor(char1)`. Then `c(char1)` will give a list of characters, whereas `c(char2)` will give a list of numbers. 
+<p> `unique(char1)` will give the unique strings in char1, `levels(char2)` will give the same thing. c(unique(char1)) is equal to c(levels(char2)), but distinct to c(unique(char2)). </p>
