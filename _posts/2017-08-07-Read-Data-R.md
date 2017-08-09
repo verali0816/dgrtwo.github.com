@@ -21,3 +21,26 @@ Play with row.names and col.names. If a single number is given, then use that co
 ```r
 read.csv("training.csv", header = FALSE, row.names = 1, col.names = c("c1","c2","c3", "c4", "c5", "c6"))
 ```
+
+2. For excel files, xls or xlsx, I am used to use readxl package.
+
+```r
+read_excel(path, sheet = NULL, range = NULL, col_names = TRUE,
+  col_types = NULL, na = "", trim_ws = TRUE, skip = 0, n_max = Inf,
+  guess_max = min(1000, n_max))
+```
+
+```r
+library(readxl)
+read_excel("trainingxls.xls", col_names = FALSE)
+```
+colnames will be "X1, X2...". 
+
+Specify the range to read,
+```r
+xx = read_excel("trainingxls.xls", col_names = FALSE, range = cell_rows(1:4))
+xx = read_excel("trainingxls.xls", col_names = FALSE, range = "C1:E7")
+xx = read_excel("trainingxls.xls", col_names = FALSE, range = "R1C2:R2C5")
+xx = read_excel("trainingxls.xls", col_names = FALSE, range = cell_cols("B:D"))
+```
+read_xls and read_xlsx are the same.
