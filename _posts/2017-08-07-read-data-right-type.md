@@ -8,20 +8,20 @@ comments: true
 ---
 
 Wrong data type can be a serious headache sometimes. It is something easy to overlook until some bugs jump into your sight. Here I will summarise several ways to avoid this type of mistakes.
+
 1. numeric type changes to character. 
-Sometimes, there are weird data mingled in your numeric data, such as "-", or "1 not". Sometimes, it can be obvious, sometimes not. `as.numeric` solves most of them. It may cause warnings, so you may want to wrap with `suppresswarnings(as.numeric())`.
+    Sometimes, there are weird data mingled in your numeric data, such as "-", or "1 not". Sometimes, it can be obvious, sometimes not. `as.numeric` solves most of them. It may cause warnings, so you may want to wrap with `suppresswarnings(as.numeric())`.
 
-You can avoid it beforehand when reading data in. In `read.csv`, you can use `colClasses` argument to specify. It actually can reduce your loading time. The possible values are "NA"(default), "NULL"(skipped), "logical", "integer", "numeric", "complex", "character", "raw", "factor", "Date", or "POSIXct". For missing value, `na.strings` argument can be specified. It can be a vector of strings. Blank fields are automatically considered to be missing no matter it is specified or not.
+    You can avoid it beforehand when reading data in. In `read.csv`, you can use `colClasses` argument to specify. It actually can reduce your loading time. The possible values are "NA"(default), "NULL"(skipped), "logical", "integer", "numeric", "complex", "character", "raw", "factor", "Date", or "POSIXct". For missing value, `na.strings` argument can be specified. It can be a vector of strings. Blank fields are automatically considered to be missing no matter it is specified or not.
 
-In `read_excel`, `col_types` can be specified. "NULL" means guessing all columns. A vector is used to speficy each column. The possible values can be "skip", "guess", "logical", "numeric", "data", "text" or "list". For missing values, `na` argument can be specified. By default, it is "". 
-
+    In `read_excel`, `col_types` can be specified. "NULL" means guessing all columns. A vector is used to speficy each column. The possible values can be "skip", "guess", "logical", "numeric", "data", "text" or "list". For missing values, `na` argument can be specified. By default, it is "". 
 
 2. character changes to factor type.
-This sometimes can cause serious headache. Pre-specify the type when readding data is a good habit. 
-In `read.csv`, the characters are converted to factor by default. If conversion is not desired, set `stringAsFactors` as FALSE, or set `colClasses` specifically.  
+    This sometimes can cause serious headache. Pre-specify the type when readding data is a good habit. 
+    In `read.csv`, the characters are converted to factor by default. If conversion is not desired, set `stringAsFactors` as FALSE, or set `colClasses` specifically.  
 
-In `read_excel`, characters will stay as characters. 
+    In `read_excel`, characters will stay as characters. 
 
-One difference I noticed of factor vs character is when converting to vector. For example, `char1` is a character column. `char2 = factor(char1)`. Then `c(char1)` will give a list of characters, whereas `c(char2)` will give a list of numbers. 
+    One difference I noticed of factor vs character is when converting to vector. For example, `char1` is a character column. `char2 = factor(char1)`. Then `c(char1)` will give a list of characters, whereas `c(char2)` will give a list of numbers. 
 
-`unique(char1)` will give the unique strings in char1, `levels(char2)` will give the same thing. c(unique(char1)) is equal to c(levels(char2)), but distinct to c(unique(char2)).
+    `unique(char1)` will give the unique strings in char1, `levels(char2)` will give the same thing. c(unique(char1)) is equal to c(levels(char2)), but distinct to c(unique(char2)).
